@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Address Iteration</title>
+</head>
+<body>
+	<h1>Address as collection:</h1>
+	<p th:text="'Raw: ' + ${addressAsCollection}" />
+	<ul>
+		<li th:each="a: ${addressAsCollection}" th:text="${a.name} + ',' + ${a.addr} + ',' + ${a.phoneNum}" />
+	</ul>
+	
+	<h1>Address as map:</h1>
+	<p th:text="'Raw: ' + ${addressAsMap}" />
+		<ul>
+		<li th:each="addressEntry: ${addressAsMap}" th:text="'Entry is ' + ${addressEntry} + '/' + ${addressEntry.key} + ',' + ${addressEntry.value.addr} + ',' + ${addressEntry.value.phoneNum}" />
+	</ul>
+	
+		<h1>Address as collection with iteration status:</h1>
+	<p th:text="'Raw: ' + ${addressAsCollection}" />
+	<ul>
+		<li th:each="a,status: ${addressAsCollection}">
+			<p th:text="'Count: ' + ${status.count}" />
+			<p th:text="'Even: ' + ${status.even}" />
+			<p th:text="'First: ' + ${status.first}" />
+			<p th:text="'Number of elements: ' + ${status.size}" />
+			<p th:text="${a.name} + ',' + ${a.addr} + ',' + ${a.phoneNum}" />
+		</li>
+	</ul>
+</body>
+</html>
